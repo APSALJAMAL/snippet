@@ -1,0 +1,41 @@
+{
+  "name": "snippets-library",
+  "version": "0.3.1",
+  "author": "Cojocaru David",
+  "devDependencies": {
+    "bun-types": "latest",
+    "concurrently": "^9.1.2"
+  },
+  "peerDependencies": {
+    "typescript": "^5.7.3"
+  },
+  "description": "A modern, full-stack code snippet manager for developers",
+  "homepage": "https://snippetslibrary.com",
+  "keywords": [
+    "bun",
+    "hono",
+    "react",
+    "vite",
+    "monorepo"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "dev:client": "cd client && bun run dev",
+    "dev:server": "cd server && bun run dev",
+    "dev:shared": "cd shared && bun run dev",
+    "dev": "concurrently \"bun run dev:shared\" \"bun run dev:server\" \"bun run dev:client\"",
+    "build:client": "cd client && bun run build",
+    "build:shared": "cd shared && bun run build",
+    "build:server": "cd server && bun run build",
+    "start:prod": "concurrently \"cd server && bun run start:prod\" \"cd client && bun run preview\"",
+    "build": "bun run build:shared && bun run build:server && bun run build:client",
+    "deploy:server": "cd server && bun run deploy",
+    "postinstall": "bun run build:shared && bun run build:server",
+    "preview:client": "cd client && bun run preview"
+  },
+  "workspaces": [
+    "./server",
+    "./client",
+    "./shared"
+  ]
+}
