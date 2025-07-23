@@ -80,8 +80,8 @@ app.use('*', cors({
     
     // Add your production domains here
     const allowedOrigins = [
-      'https://snippetslibrary.com',
-      'https://www.snippetslibrary.com'
+      'https://snippet.repulso.com',         // ✅ Add this
+  'https://www.snippet.repulso.com'      // ✅ Optional: for safety
     ];
     
     const isAllowed = allowedOrigins.includes(origin);
